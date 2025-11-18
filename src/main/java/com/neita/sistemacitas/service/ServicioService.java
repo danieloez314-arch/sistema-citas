@@ -176,13 +176,13 @@ public class ServicioService {
      * Convierte una entidad Servicio a DTO.
      */
     private ServicioDTO convertirADTO(Servicio servicio) {
-        return new ServicioDTO(
-                servicio.getId(),
-                servicio.getNombre(),
-                servicio.getDescripcion(),
-                servicio.getDuracion(),
-                servicio.getPrecio(),
-                servicio.getActivo()
-        );
+        ServicioDTO dto = new ServicioDTO();
+        dto.setId(servicio.getId());
+        dto.setNombre(servicio.getNombre());
+        dto.setDescripcion(servicio.getDescripcion());
+        dto.setDuracion(servicio.getDuracion());
+        dto.setPrecio(servicio.getPrecio());
+        dto.setActivo(servicio.getActivo());
+        return dto;
     }
 }

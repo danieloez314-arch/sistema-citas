@@ -53,25 +53,5 @@ public class CitaDTO {
 
     private String profesionalEspecialidad;
 
-    /**
-     * Constructor completo con información de entidades relacionadas.
-     */
-    public CitaDTO(Long id, LocalDateTime fechaHora, String estado, String notas, 
-                   LocalDateTime fechaCreacion, Long usuarioId, String usuarioNombre,
-                   Long servicioId, String servicioNombre, Double servicioPrecio,
-                   Long profesionalId, String profesionalNombre, String profesionalEspecialidad) {
-        this.id = id;
-        this.fechaHora = fechaHora;
-        this.estado = estado;
-        this.notas = notas;
-        this.fechaCreacion = fechaCreacion;
-        this.usuarioId = usuarioId;
-        this.usuarioNombre = usuarioNombre;
-        this.servicioId = servicioId;
-        this.servicioNombre = servicioNombre;
-        this.servicioPrecio = servicioPrecio;
-        this.profesionalId = profesionalId;
-        this.profesionalNombre = profesionalNombre;
-        this.profesionalEspecialidad = profesionalEspecialidad;
-    }
+
 }

@@ -35,17 +35,5 @@ public class ProfesionalDTO {
 
     private String usuarioEmail;
 
-    /**
-     * Constructor completo con información del usuario asociado.
-     */
-    public ProfesionalDTO(Long id, String especialidad, LocalDateTime horarioDisponible, 
-                          Boolean activo, Long usuarioId, String usuarioNombre, String usuarioEmail) {
-        this.id = id;
-        this.especialidad = especialidad;
-        this.horarioDisponible = horarioDisponible;
-        this.activo = activo;
-        this.usuarioId = usuarioId;
-        this.usuarioNombre = usuarioNombre;
-        this.usuarioEmail = usuarioEmail;
-    }
+
 }

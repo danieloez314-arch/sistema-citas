@@ -175,14 +175,14 @@ public class UsuarioService {
      * Convierte una entidad Usuario a DTO.
      */
     private UsuarioDTO convertirADTO(Usuario usuario) {
-        return new UsuarioDTO(
-                usuario.getId(),
-                usuario.getNombre(),
-                usuario.getEmail(),
-                usuario.getTelefono(),
-                usuario.getFechaRegistro(),
-                usuario.getRol(),
-                usuario.getActivo()
-        );
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setId(usuario.getId());
+        dto.setNombre(usuario.getNombre());
+        dto.setEmail(usuario.getEmail());
+        dto.setTelefono(usuario.getTelefono());
+        dto.setFechaRegistro(usuario.getFechaRegistro());
+        dto.setRol(usuario.getRol());
+        dto.setActivo(usuario.getActivo());
+        return dto;
     }
 }

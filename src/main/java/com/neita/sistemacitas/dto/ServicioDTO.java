@@ -36,14 +36,5 @@ public class ServicioDTO {
 
     private Boolean activo;
 
-    /**
-     * Constructor sin descripción para listados simples.
-     */
-    public ServicioDTO(Long id, String nombre, String duracion, Double precio, Boolean activo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.duracion = duracion;
-        this.precio = precio;
-        this.activo = activo;
-    }
+
 }

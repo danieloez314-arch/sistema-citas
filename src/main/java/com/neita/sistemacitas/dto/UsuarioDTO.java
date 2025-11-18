@@ -42,17 +42,5 @@ public class UsuarioDTO {
 
     private Boolean activo;
 
-    /**
-     * Constructor sin contraseña para respuestas (no exponer contraseña).
-     */
-    public UsuarioDTO(Long id, String nombre, String email, String telefono, 
-                      LocalDateTime fechaRegistro, String rol, Boolean activo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-        this.fechaRegistro = fechaRegistro;
-        this.rol = rol;
-        this.activo = activo;
-    }
+
 }

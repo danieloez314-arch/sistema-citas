@@ -164,14 +164,14 @@ public class ProfesionalService {
      * Convierte una entidad Profesional a DTO.
      */
     private ProfesionalDTO convertirADTO(Profesional profesional) {
-        return new ProfesionalDTO(
-                profesional.getId(),
-                profesional.getEspecialidad(),
-                profesional.getHorarioDisponible(),
-                profesional.getActivo(),
-                profesional.getUsuario().getId(),
-                profesional.getUsuario().getNombre(),
-                profesional.getUsuario().getEmail()
-        );
+        ProfesionalDTO dto = new ProfesionalDTO();
+        dto.setId(profesional.getId());
+        dto.setEspecialidad(profesional.getEspecialidad());
+        dto.setHorarioDisponible(profesional.getHorarioDisponible());
+        dto.setActivo(profesional.getActivo());
+        dto.setUsuarioId(profesional.getUsuario().getId());
+        dto.setUsuarioNombre(profesional.getUsuario().getNombre());
+        dto.setUsuarioEmail(profesional.getUsuario().getEmail());
+        return dto;
     }
 }

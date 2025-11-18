@@ -234,20 +234,20 @@ public class CitaService {
      * Convierte una entidad Cita a DTO.
      */
     private CitaDTO convertirADTO(Cita cita) {
-        return new CitaDTO(
-                cita.getId(),
-                cita.getFechaHora(),
-                cita.getEstado(),
-                cita.getNotas(),
-                cita.getFechaCreacion(),
-                cita.getUsuario().getId(),
-                cita.getUsuario().getNombre(),
-                cita.getServicio().getId(),
-                cita.getServicio().getNombre(),
-                cita.getServicio().getPrecio(),
-                cita.getProfesional().getId(),
-                cita.getProfesional().getUsuario().getNombre(),
-                cita.getProfesional().getEspecialidad()
-        );
+        CitaDTO dto = new CitaDTO();
+        dto.setId(cita.getId());
+        dto.setFechaHora(cita.getFechaHora());
+        dto.setEstado(cita.getEstado());
+        dto.setNotas(cita.getNotas());
+        dto.setFechaCreacion(cita.getFechaCreacion());
+        dto.setUsuarioId(cita.getUsuario().getId());
+        dto.setUsuarioNombre(cita.getUsuario().getNombre());
+        dto.setServicioId(cita.getServicio().getId());
+        dto.setServicioNombre(cita.getServicio().getNombre());
+        dto.setServicioPrecio(cita.getServicio().getPrecio());
+        dto.setProfesionalId(cita.getProfesional().getId());
+        dto.setProfesionalNombre(cita.getProfesional().getUsuario().getNombre());
+        dto.setProfesionalEspecialidad(cita.getProfesional().getEspecialidad());
+        return dto;
     }
 }
