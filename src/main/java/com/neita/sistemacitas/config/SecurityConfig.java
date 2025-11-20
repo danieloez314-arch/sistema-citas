@@ -76,6 +76,8 @@ public class SecurityConfig {
                     "/images/**",
                     "/login",
                     "/register",
+                    "/api/auth/register",
+                    "/api/auth/status",
                     "/api/public/**"
                 ).permitAll()
                 // Todos los demás recursos requieren autenticación
