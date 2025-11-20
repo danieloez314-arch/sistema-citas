@@ -3,8 +3,8 @@ package com.neita.sistemacitas.controller;
 import com.neita.sistemacitas.dto.UsuarioDTO;
 import com.neita.sistemacitas.service.UsuarioService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,11 +16,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/usuarios")
-@RequiredArgsConstructor
-@Slf4j
 public class UsuarioController {
 
+    private static final Logger log = LoggerFactory.getLogger(UsuarioController.class);
+
     private final UsuarioService usuarioService;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     /**
      * Lista todos los usuarios.

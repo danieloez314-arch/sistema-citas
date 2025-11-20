@@ -6,8 +6,8 @@ import com.neita.sistemacitas.service.ProfesionalService;
 import com.neita.sistemacitas.service.ServicioService;
 import com.neita.sistemacitas.service.UsuarioService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,14 +19,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/citas")
-@RequiredArgsConstructor
-@Slf4j
 public class CitaController {
+
+    private static final Logger log = LoggerFactory.getLogger(CitaController.class);
 
     private final CitaService citaService;
     private final UsuarioService usuarioService;
     private final ServicioService servicioService;
     private final ProfesionalService profesionalService;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public CitaController(CitaService citaService, UsuarioService usuarioService,
+                          ServicioService servicioService, ProfesionalService profesionalService) {
+        this.citaService = citaService;
+        this.usuarioService = usuarioService;
+        this.servicioService = servicioService;
+        this.profesionalService = profesionalService;
+    }
 
     /**
      * Lista todas las citas.

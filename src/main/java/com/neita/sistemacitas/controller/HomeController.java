@@ -4,8 +4,8 @@ import com.neita.sistemacitas.repository.CitaRepository;
 import com.neita.sistemacitas.repository.ProfesionalRepository;
 import com.neita.sistemacitas.repository.ServicioRepository;
 import com.neita.sistemacitas.repository.UsuarioRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +14,25 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Controlador principal para la página de inicio y rutas generales.
  */
 @Controller
-@RequiredArgsConstructor
-@Slf4j
 public class HomeController {
+
+    private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
     private final CitaRepository citaRepository;
     private final ServicioRepository servicioRepository;
     private final ProfesionalRepository profesionalRepository;
     private final UsuarioRepository usuarioRepository;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public HomeController(CitaRepository citaRepository, ServicioRepository servicioRepository,
+                          ProfesionalRepository profesionalRepository, UsuarioRepository usuarioRepository) {
+        this.citaRepository = citaRepository;
+        this.servicioRepository = servicioRepository;
+        this.profesionalRepository = profesionalRepository;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     /**
      * Página de inicio con estadísticas generales.

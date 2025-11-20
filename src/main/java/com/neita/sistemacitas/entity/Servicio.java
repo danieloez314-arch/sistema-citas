@@ -1,12 +1,10 @@
 package com.neita.sistemacitas.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Entidad que representa un servicio ofrecido por la barbería.
@@ -14,9 +12,6 @@ import java.util.List;
  */
 @Entity
 @Table(name = "servicio")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Servicio {
 
     @Id
@@ -43,6 +38,84 @@ public class Servicio {
     private List<Cita> citas = new ArrayList<>();
 
     /**
+     * Constructor por defecto.
+     */
+    public Servicio() {
+    }
+
+    /**
+     * Constructor con todos los campos.
+     */
+    public Servicio(Long id, String nombre, String descripcion, String duracion, 
+                    Double precio, Boolean activo, List<Cita> citas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.precio = precio;
+        this.activo = activo;
+        this.citas = citas;
+    }
+
+    // Getters y Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public List<Cita> getCitas() {
+        return citas;
+    }
+
+    public void setCitas(List<Cita> citas) {
+        this.citas = citas;
+    }
+
+    /**
      * Método auxiliar para agregar una cita al servicio.
      * Mantiene la consistencia bidireccional de la relación.
      */
@@ -58,5 +131,30 @@ public class Servicio {
     public void removerCita(Cita cita) {
         citas.remove(cita);
         cita.setServicio(null);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Servicio servicio = (Servicio) o;
+        return Objects.equals(id, servicio.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Servicio{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", duracion='" + duracion + '\'' +
+                ", precio=" + precio +
+                ", activo=" + activo +
+                '}';
     }
 }

@@ -3,8 +3,8 @@ package com.neita.sistemacitas.controller;
 import com.neita.sistemacitas.dto.ServicioDTO;
 import com.neita.sistemacitas.service.ServicioService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,11 +16,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/servicios")
-@RequiredArgsConstructor
-@Slf4j
 public class ServicioController {
 
+    private static final Logger log = LoggerFactory.getLogger(ServicioController.class);
+
     private final ServicioService servicioService;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public ServicioController(ServicioService servicioService) {
+        this.servicioService = servicioService;
+    }
 
     /**
      * Lista todos los servicios.

@@ -7,8 +7,8 @@ import com.neita.sistemacitas.exception.ResourceNotFoundException;
 import com.neita.sistemacitas.exception.DuplicateResourceException;
 import com.neita.sistemacitas.repository.ProfesionalRepository;
 import com.neita.sistemacitas.repository.UsuarioRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +20,20 @@ import java.util.stream.Collectors;
  * Implementa la lógica de negocio y validaciones necesarias.
  */
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class ProfesionalService {
+
+    private static final Logger log = LoggerFactory.getLogger(ProfesionalService.class);
 
     private final ProfesionalRepository profesionalRepository;
     private final UsuarioRepository usuarioRepository;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public ProfesionalService(ProfesionalRepository profesionalRepository, UsuarioRepository usuarioRepository) {
+        this.profesionalRepository = profesionalRepository;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     /**
      * Obtiene todos los profesionales del sistema.

@@ -4,8 +4,8 @@ import com.neita.sistemacitas.dto.ApiResponse;
 import com.neita.sistemacitas.dto.ServicioDTO;
 import com.neita.sistemacitas.service.ServicioService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +18,18 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/servicios")
-@RequiredArgsConstructor
-@Slf4j
 public class ServicioRestController {
 
+    private static final Logger log = LoggerFactory.getLogger(ServicioRestController.class);
+
     private final ServicioService servicioService;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public ServicioRestController(ServicioService servicioService) {
+        this.servicioService = servicioService;
+    }
 
     /**
      * Obtiene todos los servicios.

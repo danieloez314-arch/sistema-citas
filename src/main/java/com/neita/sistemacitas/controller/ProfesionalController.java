@@ -4,8 +4,8 @@ import com.neita.sistemacitas.dto.ProfesionalDTO;
 import com.neita.sistemacitas.service.ProfesionalService;
 import com.neita.sistemacitas.service.UsuarioService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +17,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/profesionales")
-@RequiredArgsConstructor
-@Slf4j
 public class ProfesionalController {
+
+    private static final Logger log = LoggerFactory.getLogger(ProfesionalController.class);
 
     private final ProfesionalService profesionalService;
     private final UsuarioService usuarioService;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public ProfesionalController(ProfesionalService profesionalService, UsuarioService usuarioService) {
+        this.profesionalService = profesionalService;
+        this.usuarioService = usuarioService;
+    }
 
     /**
      * Lista todos los profesionales.

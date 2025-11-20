@@ -4,8 +4,8 @@ import com.neita.sistemacitas.dto.ApiResponse;
 import com.neita.sistemacitas.dto.UsuarioDTO;
 import com.neita.sistemacitas.service.UsuarioService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +18,18 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/usuarios")
-@RequiredArgsConstructor
-@Slf4j
 public class UsuarioRestController {
 
+    private static final Logger log = LoggerFactory.getLogger(UsuarioRestController.class);
+
     private final UsuarioService usuarioService;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public UsuarioRestController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     /**
      * Obtiene todos los usuarios.
