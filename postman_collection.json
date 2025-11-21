@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "sistema-citas-api",
+		"name": "Sistema de Citas - Barbería Neita",
+		"description": "Colección completa de endpoints para el sistema de citas de la Barbería Neita. Incluye operaciones CRUD para usuarios, profesionales, servicios y citas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticación",
+			"item": [
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Usuario Nuevo\",\n  \"email\": \"nuevo@example.com\",\n  \"password\": \"password123\",\n  \"confirmPassword\": \"password123\",\n  \"telefono\": \"3001234567\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "register"]
+						},
+						"description": "Registra un nuevo usuario en el sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Estado de Autenticación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/status",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "status"]
+						},
+						"description": "Verifica el estado del sistema de autenticación"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Obtener Todos los Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios"]
+						},
+						"description": "Obtiene la lista de todos los usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios", "1"]
+						},
+						"description": "Obtiene un usuario específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Pedro Ramírez\",\n  \"email\": \"pedro@example.com\",\n  \"password\": \"password123\",\n  \"telefono\": \"3009998877\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios"]
+						},
+						"description": "Crea un nuevo usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Pedro Ramírez Actualizado\",\n  \"email\": \"pedro@example.com\",\n  \"telefono\": \"3009998877\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios", "1"]
+						},
+						"description": "Actualiza un usuario existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios", "1"]
+						},
+						"description": "Elimina un usuario (eliminación lógica)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servicios",
+			"item": [
+				{
+					"name": "Obtener Todos los Servicios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/servicios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servicios"]
+						},
+						"description": "Obtiene la lista de todos los servicios"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Servicio por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/servicios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servicios", "1"]
+						},
+						"description": "Obtiene un servicio específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Servicio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Corte Premium\",\n  \"descripcion\": \"Corte de cabello premium con acabado de lujo\",\n  \"duracion\": \"45 minutos\",\n  \"precio\": 40000.00\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/servicios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servicios"]
+						},
+						"description": "Crea un nuevo servicio"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Servicio",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Corte Premium Actualizado\",\n  \"descripcion\": \"Corte de cabello premium con acabado de lujo y tratamiento\",\n  \"duracion\": \"50 minutos\",\n  \"precio\": 45000.00\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/servicios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servicios", "1"]
+						},
+						"description": "Actualiza un servicio existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Servicio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/servicios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servicios", "1"]
+						},
+						"description": "Elimina un servicio (eliminación lógica)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profesionales",
+			"item": [
+				{
+					"name": "Obtener Todos los Profesionales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/profesionales",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "profesionales"]
+						},
+						"description": "Obtiene la lista de todos los profesionales"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Profesional por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/profesionales/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "profesionales", "1"]
+						},
+						"description": "Obtiene un profesional específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Profesional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"especialidad\": \"Barbero Experto\",\n  \"horarioDisponible\": \"2025-01-20T09:00:00\",\n  \"usuarioId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/profesionales",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "profesionales"]
+						},
+						"description": "Crea un nuevo profesional"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Profesional",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"especialidad\": \"Barbero Master\",\n  \"horarioDisponible\": \"2025-01-20T10:00:00\",\n  \"usuarioId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/profesionales/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "profesionales", "1"]
+						},
+						"description": "Actualiza un profesional existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Profesional",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/profesionales/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "profesionales", "1"]
+						},
+						"description": "Elimina un profesional (eliminación lógica)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Citas",
+			"item": [
+				{
+					"name": "Obtener Todas las Citas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/citas",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "citas"]
+						},
+						"description": "Obtiene la lista de todas las citas"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Cita por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/citas/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "citas", "1"]
+						},
+						"description": "Obtiene una cita específica por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cita",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fechaHora\": \"2025-01-25T15:00:00\",\n  \"estado\": \"PENDIENTE\",\n  \"notas\": \"Cliente prefiere corte moderno\",\n  \"usuarioId\": 1,\n  \"servicioId\": 1,\n  \"profesionalId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/citas",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "citas"]
+						},
+						"description": "Crea una nueva cita"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Cita",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fechaHora\": \"2025-01-25T16:00:00\",\n  \"estado\": \"CONFIRMADA\",\n  \"notas\": \"Cliente confirmó asistencia\",\n  \"usuarioId\": 1,\n  \"servicioId\": 1,\n  \"profesionalId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/citas/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "citas", "1"]
+						},
+						"description": "Actualiza una cita existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Cita",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/citas/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "citas", "1"]
+						},
+						"description": "Elimina una cita"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

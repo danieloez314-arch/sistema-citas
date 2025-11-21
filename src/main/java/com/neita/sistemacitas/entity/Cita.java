@@ -1,11 +1,9 @@
 package com.neita.sistemacitas.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Entidad que representa una cita en el sistema.
@@ -13,9 +11,6 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "cita")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Cita {
 
     @Id
@@ -50,6 +45,94 @@ public class Cita {
     private Profesional profesional;
 
     /**
+     * Constructor por defecto.
+     */
+    public Cita() {
+    }
+
+    /**
+     * Constructor con todos los campos.
+     */
+    public Cita(Long id, LocalDateTime fechaHora, String estado, String notas, 
+                LocalDateTime fechaCreacion, Usuario usuario, Servicio servicio, 
+                Profesional profesional) {
+        this.id = id;
+        this.fechaHora = fechaHora;
+        this.estado = estado;
+        this.notas = notas;
+        this.fechaCreacion = fechaCreacion;
+        this.usuario = usuario;
+        this.servicio = servicio;
+        this.profesional = profesional;
+    }
+
+    // Getters y Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
+
+    public Profesional getProfesional() {
+        return profesional;
+    }
+
+    public void setProfesional(Profesional profesional) {
+        this.profesional = profesional;
+    }
+
+    /**
      * Método que se ejecuta antes de persistir la entidad.
      * Establece la fecha de creación automáticamente.
      */
@@ -61,5 +144,31 @@ public class Cita {
         if (estado == null || estado.isEmpty()) {
             estado = "PENDIENTE";
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cita cita = (Cita) o;
+        return Objects.equals(id, cita.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "id=" + id +
+                ", fechaHora=" + fechaHora +
+                ", estado='" + estado + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", usuarioId=" + (usuario != null ? usuario.getId() : null) +
+                ", servicioId=" + (servicio != null ? servicio.getId() : null) +
+                ", profesionalId=" + (profesional != null ? profesional.getId() : null) +
+                '}';
     }
 }

@@ -4,8 +4,8 @@ import com.neita.sistemacitas.dto.ServicioDTO;
 import com.neita.sistemacitas.entity.Servicio;
 import com.neita.sistemacitas.exception.ResourceNotFoundException;
 import com.neita.sistemacitas.repository.ServicioRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,11 +17,18 @@ import java.util.stream.Collectors;
  * Implementa la lógica de negocio y validaciones necesarias.
  */
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class ServicioService {
 
+    private static final Logger log = LoggerFactory.getLogger(ServicioService.class);
+
     private final ServicioRepository servicioRepository;
+
+    /**
+     * Constructor con inyección de dependencias.
+     */
+    public ServicioService(ServicioRepository servicioRepository) {
+        this.servicioRepository = servicioRepository;
+    }
 
     /**
      * Obtiene todos los servicios del sistema.

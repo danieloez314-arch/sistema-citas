@@ -1,7 +1,8 @@
 package com.neita.sistemacitas.exception;
 
 import com.neita.sistemacitas.dto.ErrorDetails;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -19,8 +20,9 @@ import java.util.Map;
  * Captura y procesa todas las excepciones de manera centralizada.
  */
 @RestControllerAdvice
-@Slf4j
 public class GlobalExceptionHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * Maneja excepciones de recurso no encontrado.
